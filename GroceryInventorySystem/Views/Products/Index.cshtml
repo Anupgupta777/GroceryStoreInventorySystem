@@ -1,0 +1,133 @@
+﻿@model IEnumerable<GroceryInventorySystem.Models.Product>
+
+<div class="container-fluid p-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2 class="fw-bold text-primary">
+            🛒 Products Management
+        </h2>
+
+        <a asp-action="Create"
+           class="btn btn-success shadow">
+            + Add Product
+        </a>
+
+    </div>
+
+    <div class="card shadow border-0">
+
+        <div class="card-header bg-white">
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <input type="text"
+                           class="form-control"
+                           placeholder="🔍 Search Products..." />
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-hover table-striped">
+
+                <thead class="table-dark">
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Product Name</th>
+                        <th>Category ID</th>
+                        <th>Stock</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>@item.ProductID</td>
+
+                            <td>
+                                <strong>@item.ProductName</strong>
+                            </td>
+
+                            <td>@item.CategoryID</td>
+
+                            <td>
+                                @if (item.Stock > 20)
+                                {
+                                    <span class="badge bg-success">
+                                        @item.Stock In Stock
+                                    </span>
+                                }
+                                else if (item.Stock > 0)
+                                {
+                                    <span class="badge bg-warning text-dark">
+                                        Low Stock (@item.Stock)
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">
+                                        Out of Stock
+                                    </span>
+                                }
+                            </td>
+
+                            <td>
+                                <strong class="text-success">
+                                    ₹@item.Price
+                                </strong>
+                            </td>
+
+                            <td>
+                                @if (item.Stock > 0)
+                                {
+                                    <span class="badge bg-success">
+                                        Available
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">
+                                        Unavailable
+                                    </span>
+                                }
+                            </td>
+
+                            <td>
+
+                                <button class="btn btn-primary btn-sm">
+                                    ✏️ Edit
+                                </button>
+
+                                <button class="btn btn-danger btn-sm">
+                                    🗑 Delete
+                                </button>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

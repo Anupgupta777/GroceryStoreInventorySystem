@@ -1,0 +1,142 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container-fluid p-4">
+
+    <div class="page-card mb-4">
+
+        <h2>
+            Welcome Back, Admin 👋
+        </h2>
+
+        <p>
+            Here's what's happening with your grocery store today.
+        </p>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-3">
+
+            <div class="dashboard-card green">
+                <h5>Total Products</h5>
+                <h1>245</h1>
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="dashboard-card blue">
+                <h5>Total Stock Quantity</h5>
+                <h1>8562</h1>
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="dashboard-card orange">
+                <h5>Today's Sales</h5>
+                <h1>₹18450</h1>
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="dashboard-card purple">
+                <h5>Low Stock</h5>
+                <h1>12</h1>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card shadow mt-4">
+
+    <div class="card-header bg-primary text-white">
+
+        <h5 class="mb-0">
+            📈 Weekly Sales Overview
+        </h5>
+
+    </div>
+
+    <div style="height:300px;">
+        <canvas id="salesChart"></canvas>
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+    var ctx = document.getElementById('salesChart');
+
+    new Chart(ctx, {
+
+    type: 'line',
+
+    data: {
+
+    labels: [
+    'Mon',
+    'Tues',
+    'Wed',
+    'Thur',
+    'Fri',
+    'Sat',
+    'Sun'
+    ],
+
+    datasets: [{
+
+    label: 'Sales Amount',
+
+    data: [
+    1200,
+    1900,
+    1500,
+    2800,
+    2200,
+    3500,
+    4000
+    ],
+
+    borderColor: '#0d6efd',
+
+    backgroundColor: 'rgba(13,110,253,0.2)',
+
+    fill: true,
+
+    tension: 0.4
+
+    }]
+
+    },
+
+    options: {
+
+    responsive: true,
+
+    maintainAspectRatio: false,
+
+    plugins: {
+
+    legend: {
+    display: true
+    }
+
+    }
+
+    }
+
+    });
+
+</script>

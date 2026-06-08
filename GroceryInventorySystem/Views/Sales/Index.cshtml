@@ -1,0 +1,165 @@
+﻿@model IEnumerable<GroceryInventorySystem.Models.Sale>
+
+<div class="container-fluid">
+
+    <h2 class="mb-4">Sales Page</h2>
+
+    <div class="row mb-4">
+
+        <div class="col-md-4">
+            <div class="card shadow border-0"
+                 style="background:#d4edda;">
+                <div class="card-body">
+                    <h5>Total Revenue</h5>
+                    <h2 class="text-success fw-bold">
+                        ₹450,000
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow border-0"
+                 style="background:#d6eaf8;">
+                <div class="card-body">
+                    <h5>Total Orders</h5>
+                    <h2 class="text-primary fw-bold">
+                        325
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow border-0"
+                 style="background:#fdebd0;">
+                <div class="card-body">
+                    <h5>Average Order Value</h5>
+                    <h2 class="text-warning fw-bold">
+                        ₹1,384
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card shadow">
+
+        <div class="card-header">
+
+            <div class="d-flex justify-content-between">
+
+                <h4>Recent Sales Transactions</h4>
+
+                <input type="text"
+                       class="form-control w-25"
+                       placeholder="Search Sales..." />
+
+            </div>
+
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-hover table-striped">
+
+                <thead class="table-dark">
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Customer</th>
+                        <th>Items</th>
+                        <th>Total Amount</th>
+                        <th>Payment</th>
+                        <th>Status</th>
+                        <th>Delivery</th>
+                        <th>Actions</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>@item.SaleID</td>
+
+                            <td>@item.SaleDate</td>
+
+                            <td>@item.CustomerName</td>
+
+                            <td>@item.TotalItems</td>
+
+                            <td>₹@item.TotalAmount</td>
+
+                            <td>
+
+                                @if (item.PaymentStatus == "Paid")
+                                {
+                                    <span class="badge bg-success">
+                                        Paid
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning text-dark">
+                                        Pending
+                                    </span>
+                                }
+
+                            </td>
+
+                            <td>@item.PaymentStatus</td>
+                            <td>
+
+                                @if (item.DeliveryStatus == "Delivered")
+                                {
+                                    <span class="badge bg-success">
+                                        Delivered
+                                    </span>
+                                }
+                                else if (item.DeliveryStatus == "Processing")
+                                {
+                                    <span class="badge bg-primary">
+                                        Processing
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-warning text-dark">
+                                        Shipped
+                                    </span>
+                                }
+                                <td>
+
+                                    <button class="btn btn-info btn-sm">
+                                        👁
+                                    </button>
+
+                                    <button class="btn btn-primary btn-sm">
+                                        ✏️
+                                    </button>
+
+                                    <button class="btn btn-danger btn-sm">
+                                        🗑
+                                    </button>
+
+                                </td>
+
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

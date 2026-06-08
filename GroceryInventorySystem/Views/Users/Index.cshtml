@@ -1,0 +1,68 @@
+﻿@model IEnumerable<GroceryInventorySystem.Models.User>
+
+<div class="container-fluid">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <h2>User Management</h2>
+
+        <input type="text"
+               class="form-control w-25"
+               placeholder="Search Users..." />
+
+    </div>
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <table class="table table-hover">
+
+                <thead class="table-dark">
+
+                    <tr>
+                        <th>User ID</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>@item.UserID</td>
+
+                            <td>@item.FullName</td>
+
+                            <td>@item.Email</td>
+
+                            <td>@item.Role</td>
+
+                            <td>
+                                <button class="btn btn-primary btn-sm">
+                                    Edit
+                                </button>
+
+                                <button class="btn btn-danger btn-sm">
+                                    Delete
+                                </button>
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
