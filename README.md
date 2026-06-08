@@ -23,5 +23,5 @@ A web-based Grocery Inventory Management System developed using ASP.NET Core MVC
 
 ## Developed By
 
-Ronit Gupta
+Anup Gupta and My friend Dev Mahato
 BCA Project
